@@ -39,6 +39,7 @@ const chgFlag= (ele)=>{
 let URL = `https://v6.exchangerate-api.com/v6/${API}/pair/${fromCurr.value}/${toCurr.value}`;
 
 
+
 const fetchCurrency = async (eve)=>{
   eve.preventDefault();
   let amtValue = amount.value;
@@ -47,13 +48,14 @@ const fetchCurrency = async (eve)=>{
     amount.value = 1;
   };
 
+  let URL = `https://v6.exchangerate-api.com/v6/${API}/pair/${fromCurr.value}/${toCurr.value}`;
   let data = await fetch(URL);
   let exchange =await data.json();
   let exchangeValue =await exchange.conversion_rate;
+
   
    display.innerText = `${amount.value}${fromCurr.value} = ${amount.value*exchangeValue}${toCurr.value}`
 }
 btn.addEventListener("click", fetchCurrency);
 
-window.addEventListener('load', fetchCurrency)
-
+window.addEventListener("load", fetchCurrency);
